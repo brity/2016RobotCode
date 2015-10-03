@@ -1,3 +1,10 @@
+/* NOTE: Okay so I just remembered that one side of 
+ * the robot is inverted in comparison to the other. 
+ * So for example, if one motor is going 10rpm, the 
+ * other one is going -10rpm to go at the same speed 
+ * because they are identical when it comes to wiring. 
+ * So make sure you know which side is which.
+*/
 package org.usfirst.frc.team5631.robot;
 
 import edu.wpi.first.wpilibj.CounterBase;
@@ -18,19 +25,17 @@ public class DriveTrain {
 		 * versa for the right side also sets the elevator motor and encoder pin
 		 * locations
 		 */
-		leftSide = new MotorEncoderSystem(new Talon(0), new Talon(1),
-				new Encoder(2, 3, true, CounterBase.EncodingType.k1X));
-		rightSide = new MotorEncoderSystem(new Talon(2), new Talon(3),
-				new Encoder(0, 1, true, CounterBase.EncodingType.k1X));
+		leftSide = new MotorEncoderSystem(new Talon(0), new Talon(1),new Encoder(2, 3, true, CounterBase.EncodingType.k1X));
+		rightSide = new MotorEncoderSystem(new Talon(2), new Talon(3),new Encoder(0, 1, true, CounterBase.EncodingType.k1X));
 		elevator = new MotorEncoderSystem(new Talon(4), new Encoder(5, 6, false, CounterBase.EncodingType.k1X));
 		controller = new Controller[2];
 		/*
 		 * Creates a new controller -- controller 0 needs to be joystick and
-		 * controller 1 needs to be xbox controller, you can drag & drop this in
+		 * controller 1 needs to be Xbox controller, you can drag & drop this in
 		 * the drive station software.
 		 */
-		controller[0] = new Controller(new Joystick(0));//Joystick controller
-		controller[1] = new Controller(new Joystick(1));//Xbox controller
+		controller[0] = new Controller(new Joystick(0));// Joystick controller
+		controller[1] = new Controller(new Joystick(1));// Xbox controller
 
 		// creates the speed regulator
 		regulator = new Regulator();
@@ -70,15 +75,16 @@ public class DriveTrain {
 		leftSide.resetDist();
 		rightSide.resetDist();
 	}
-
+	/** 
+	 * Chooses what height the elevator must reach.
+	 * @param level is the height marker that the elevator must reach
+	 */
 	public void raiseElevator(double level) {
 
 		// Set speed, distance from level before slowing down and
+		@SuppressWarnings(value = { "unused" })
 		double t = 2;
 		double speed = 10;
-
-		// not sure what this does lols
-		boolean added = false;
 
 		// Checks Whether the elevators needs to go up or down and applies the
 		// correct speed
@@ -99,7 +105,11 @@ public class DriveTrain {
 		}
 
 	}
-
+	/**
+	 * Drives a specified distance
+	 * @param distance1 is the left side's distance to go
+	 * @param distance2 is the right side's distance to go
+	 */
 	public void drive(double distance1, double distance2) {
 
 		int t = 10;
@@ -174,7 +184,10 @@ public class DriveTrain {
 		elevator.runMotor();
 
 	}
-
+	/**
+	 * Calibrates the elevator
+	 * 
+	 */
 	public void calibrateElevator() {
 		// Sets the max speed of the elevator to 10 inches per second
 		elevator.setSpeedElev(-10);
@@ -214,7 +227,7 @@ public class DriveTrain {
 			}
 
 			if (controller[1] != null) {
-				
+
 				if (Methods.getParameters(inputDevice2, 0.2)) {
 					elevator.setSpeedElev(inputDevice2 * 20);
 				} else {

@@ -1,21 +1,34 @@
+/* 
+ * So we will probably need to know the PPR of the encoder, 
+ * because that seems to vary between units. The following 
+ * video explains how encoders work so using that, I am 
+ * hoping we can at least figure out which direction our 
+ * encoders are spinning and use that to make sure they 
+ * spin exactly how we want them to.
+ * https://www.youtube.com/watch?v=005lyrHGeE8
+ */
 package org.usfirst.frc.team5631.robot;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Talon;
 
 public class MotorEncoderSystem {
-	//Our little power things for the motors
+	// Our little power things for the motors
 	public Talon front, rear, main;
-	//The sensors that read how fast a motor is spinning
+	// The sensors that read how fast a motor is spinning
 	public Encoder encoder;
 
-	double power, speed, time;
+	double power, speed, time, actualSpeed;
 
 	// PID Variables
 	double error, target_speed, net_error, sum_error, diff_error, prev_error;
 	double kP, kI, kD;
 	public double distance;
 
+	/**
+	 * So from what I remember, every Motor has a talon or in this case 2 talons.
+	 * The motor encoder system is grouping the talons which I believe provide power to the motors to the
+	 */
 	public MotorEncoderSystem(Talon front, Talon rear, Encoder encoder) {
 
 		this.front = front;
@@ -116,10 +129,15 @@ public class MotorEncoderSystem {
 	public void resetDist() {
 		encoder.reset();
 	}
-
+	/**
+	 * Physics :D
+	 * https://www.youtube.com/watch?v=XfAt6hNV8XM
+	 * #Gains ;D
+	 * 
+	 */
 	public void PID() {
-
-		double actualSpeed = encoder.getRate();
+		actualSpeed = encoder.getRate();
+		
 		target_speed = speed;
 
 		error = target_speed - actualSpeed;

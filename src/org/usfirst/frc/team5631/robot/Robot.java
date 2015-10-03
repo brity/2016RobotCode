@@ -26,13 +26,10 @@ public class Robot extends IterativeRobot {
 	public static boolean calibrating = true;
 
 	public void robotInit() {
-
 		server = CameraServer.getInstance();
 		server.setQuality(50);
 		server.startAutomaticCapture("cam1");
-
 		driveTrain = new DriveTrain();
-
 	}
 
 	public void autonomousInit() {
@@ -45,8 +42,9 @@ public class Robot extends IterativeRobot {
 		calibrating = true;
 		driveTrain.resetDistance();
 
-		// turning distance, found through experimentation with the physical robot
-		double turningDistance = 23.1; 
+		// turning distance, found through experimentation with the physical
+		// robot
+		double turningDistance = 23.1;
 		/*
 		 * Sets the size of the commands array, needs to be [n =
 		 * numberOfCommands][3]
@@ -54,9 +52,13 @@ public class Robot extends IterativeRobot {
 		commands = new double[3][3];
 		/*
 		 * Last number tells you whether its the elevator or motors running 1 =
-		 * motors, 2 = elevator First number tells the motors on the left side
+		 * motors, 2 = elevator. First number tells the motors on the left side
 		 * distance forwards or the elevators level that it needs to go second
 		 * number tells right side motor
+		 * 
+		 * So yeah, Ryan made this code and I have no idea what it's
+		 * referencing. I'm not sure if it's referencing the commands array or
+		 * raisetote or something else.
 		 */
 		raiseTote(0);
 		driveForward(84 + 28, 1);
@@ -78,8 +80,16 @@ public class Robot extends IterativeRobot {
 		commands[i] = convert(0, 0, 2);
 	}
 
+	/**
+	 * Takes 3 doubles, puts them
+	 * 
+	 * @param num1
+	 * @param num2
+	 * @param n
+	 */
 	public double[] convert(double num1, double num2, double n) {
 		double[] number = new double[3];
+		// double number[] = {num1,num2,n};
 		number[0] = num1;
 		number[1] = num2;
 		number[2] = n;
@@ -87,7 +97,6 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void autonomousPeriodic() {
-
 		// if the robot is not calibrating then it will run the set of commands
 		if (!calibrating) {
 			//

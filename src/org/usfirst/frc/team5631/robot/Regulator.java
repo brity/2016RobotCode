@@ -8,7 +8,9 @@ public class Regulator {
 		speedZ = speedY = throttle = 0;
 
 	}
-
+	/*
+	 * 
+	 */
 	public double regulateLeftSpeed() {
 		double speedLeft = 0;
 
