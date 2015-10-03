@@ -1,5 +1,8 @@
-//Ryan
-
+/*
+ * This is the main robot code for FRC team 5631.
+ * This class uses the other objects to control the robot
+ * while it's on.
+ */
 package org.usfirst.frc.team5631.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -15,9 +18,10 @@ import edu.wpi.first.wpilibj.CameraServer;
 public class Robot extends IterativeRobot {
 
 	DriveTrain driveTrain;
+	// This is the webcam.
 	CameraServer server;
 	double[][] commands;
-	static int i = 0;
+	static int num_i = 0;
 
 	public static boolean calibrating = true;
 
@@ -32,44 +36,45 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void autonomousInit() {
-		// Determines whether it is calibrating -- always true if autonomous is
-		// turned off then oni
-		// also resets the distance that the elevator and 2 motor sides have
-		// gone
-		i = 0;
+		/*
+		 * Determines whether it is calibrating -- always true if autonomous is
+		 * turned off then on also resets the distance that the elevator and 2
+		 * motor sides have gone
+		 */
+		num_i = 0;
 		calibrating = true;
 		driveTrain.resetDistance();
 
-		// turning distance
-		double t = 23.1;// found through experimentation with physical robot
-
-		// Sets the size of the commands array, needs to be [n =
-		// numberOfCommands][3]
+		// turning distance, found through experimentation with the physical robot
+		double turningDistance = 23.1; 
+		/*
+		 * Sets the size of the commands array, needs to be [n =
+		 * numberOfCommands][3]
+		 */
 		commands = new double[3][3];
-
-		// Last number tells you whether its the elevator or motors running 1 =
-		// motors, 2 = elevator
-		// First number tells the motors on the left side distance forwards or
-		// the elevators level that it needs to go
-		// second number tells right side motor
-		
+		/*
+		 * Last number tells you whether its the elevator or motors running 1 =
+		 * motors, 2 = elevator First number tells the motors on the left side
+		 * distance forwards or the elevators level that it needs to go second
+		 * number tells right side motor
+		 */
 		raiseTote(0);
-		driveForward(84+28,1);
+		driveForward(84 + 28, 1);
 		dropTote(2);
 	}
 
 	public void driveForward(int distance, int i) {
 		// 1 Command
-				commands[i] = convert(distance, distance, 1);
+		commands[i] = convert(distance, distance, 1);
 	}
-	
-	public void raiseTote(int i){
-		//1 command
+
+	public void raiseTote(int i) {
+		// 1 command
 		commands[i] = convert(2, 0, 2);
 	}
-	
-	public void dropTote(int i){
-		//1 command
+
+	public void dropTote(int i) {
+		// 1 command
 		commands[i] = convert(0, 0, 2);
 	}
 
@@ -85,11 +90,12 @@ public class Robot extends IterativeRobot {
 
 		// if the robot is not calibrating then it will run the set of commands
 		if (!calibrating) {
-			if (i < commands.length) {
-				if (commands[i][2] == 1) {
-					driveTrain.drive(commands[i][0], commands[i][1]);
-				} else if (commands[i][2] == 2) {
-					driveTrain.raiseElevator(commands[i][0]);
+			//
+			if (num_i < commands.length) {
+				if (commands[num_i][2] == 1) {
+					driveTrain.drive(commands[num_i][0], commands[num_i][1]);
+				} else if (commands[num_i][2] == 2) {
+					driveTrain.raiseElevator(commands[num_i][0]);
 				}
 				driveTrain.runSystems();
 			} else {
