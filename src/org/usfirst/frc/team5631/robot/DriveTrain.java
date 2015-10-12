@@ -19,14 +19,20 @@ public class DriveTrain {
 	Regulator regulator;
 	double maxSpeed, calibratingTimer;
 
+	/**
+	 * Makes a new drive-train with left side motors, right side motors, an
+	 * elevator and 2 controllers.
+	 */
 	public DriveTrain() {
 		/*
 		 * Sets the left side to store the left side motors and encoder vice
 		 * versa for the right side also sets the elevator motor and encoder pin
 		 * locations
 		 */
-		leftSide = new MotorEncoderSystem(new Talon(0), new Talon(1),new Encoder(2, 3, true, CounterBase.EncodingType.k1X));
-		rightSide = new MotorEncoderSystem(new Talon(2), new Talon(3),new Encoder(0, 1, true, CounterBase.EncodingType.k1X));
+		leftSide = new MotorEncoderSystem(new Talon(0), new Talon(1),
+				new Encoder(2, 3, true, CounterBase.EncodingType.k1X));
+		rightSide = new MotorEncoderSystem(new Talon(2), new Talon(3),
+				new Encoder(0, 1, true, CounterBase.EncodingType.k1X));
 		elevator = new MotorEncoderSystem(new Talon(4), new Encoder(5, 6, false, CounterBase.EncodingType.k1X));
 		controller = new Controller[2];
 		/*
@@ -75,9 +81,12 @@ public class DriveTrain {
 		leftSide.resetDist();
 		rightSide.resetDist();
 	}
-	/** 
+
+	/**
 	 * Chooses what height the elevator must reach.
-	 * @param level is the height marker that the elevator must reach
+	 * 
+	 * @param level
+	 *            is the height marker that the elevator must reach
 	 */
 	public void raiseElevator(double level) {
 
@@ -105,10 +114,14 @@ public class DriveTrain {
 		}
 
 	}
+
 	/**
 	 * Drives a specified distance
-	 * @param distance1 is the left side's distance to go
-	 * @param distance2 is the right side's distance to go
+	 * 
+	 * @param distance1
+	 *            is the left side's distance to go
+	 * @param distance2
+	 *            is the right side's distance to go
 	 */
 	public void drive(double distance1, double distance2) {
 
@@ -160,6 +173,11 @@ public class DriveTrain {
 
 	}
 
+	/**
+	 * 
+	 * @param leftSidePower
+	 * @param rightSidePower
+	 */
 	public void setWheelSystemPowers(double leftSidePower, double rightSidePower) {
 		// Sets the power of the left and right side to the inputed power
 		// ONLY REALLY USED TO OVERIDE THE PID
@@ -184,6 +202,7 @@ public class DriveTrain {
 		elevator.runMotor();
 
 	}
+
 	/**
 	 * Calibrates the elevator
 	 * 
@@ -211,9 +230,12 @@ public class DriveTrain {
 		calibratingTimer++;
 	}
 
+	/**
+	 * 
+	 */
 	public void checkInputs() {
 
-		// Runs a for loop through the axises, x and y for the joystick
+		// Runs a for loop through the axis', x and y for the joystick
 		for (int i = 1; i < 3; i++) {
 
 			double inputDevice1 = controller[0].getAxisValue(i);

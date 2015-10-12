@@ -21,6 +21,8 @@ public class Robot extends IterativeRobot {
 	// This is the webcam.
 	CameraServer server;
 	double[][] commands;
+	// num_i is set to 0
+	// TODO: figure out what this num_i is for
 	static int num_i = 0;
 
 	public static boolean calibrating = true;
@@ -81,7 +83,7 @@ public class Robot extends IterativeRobot {
 	}
 
 	/**
-	 * Takes 3 doubles, puts them
+	 * Takes 3 doubles, puts them into an array
 	 * 
 	 * @param num1
 	 * @param num2
@@ -99,7 +101,21 @@ public class Robot extends IterativeRobot {
 	public void autonomousPeriodic() {
 		// if the robot is not calibrating then it will run the set of commands
 		if (!calibrating) {
-			//
+			/*
+			 * if num_i is less than the number of commands it will continue on
+			 * if num_i is greater or equal to the number of commands it will
+			 * send no power to the wheels. So from what it seems, num_i never
+			 * goes above 0, so as long as there are 1 or more commands it can
+			 * move.
+			 * 
+			 * From examining the code, it seems that there is only 1 row of
+			 * commands commands= {this is the value being sent to the left
+			 * motor or the level the elevator will rise to, this value is sent
+			 * to the right motor , if this element is 1 it will set the
+			 * distance the left motor must go and the right motor if this
+			 * element is 2 it will raise the elevator to the level in element 1
+			 * of this array};
+			 */
 			if (num_i < commands.length) {
 				if (commands[num_i][2] == 1) {
 					driveTrain.drive(commands[num_i][0], commands[num_i][1]);
@@ -107,7 +123,7 @@ public class Robot extends IterativeRobot {
 					driveTrain.raiseElevator(commands[num_i][0]);
 				}
 				driveTrain.runSystems();
-			} else {
+			} else {// No power is sent to wheels
 				driveTrain.setWheelSystemPowers(0, 0);
 				driveTrain.elevator.setSpeed(0);
 				driveTrain.runSystems();

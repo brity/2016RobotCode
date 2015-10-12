@@ -28,6 +28,9 @@ public class MotorEncoderSystem {
 	/**
 	 * So from what I remember, every Motor has a talon or in this case 2 talons.
 	 * The motor encoder system is grouping the talons which I believe provide power to the motors to the
+	 * @param front not sure what the front motor is
+	 * @param rear not sure what the rear motor is
+	 * @param encoder this is the encoder for the motor
 	 */
 	public MotorEncoderSystem(Talon front, Talon rear, Encoder encoder) {
 
@@ -43,7 +46,11 @@ public class MotorEncoderSystem {
 		kD = 0.001;
 
 	}
-
+	/**
+	 * 
+	 * @param main is the Talon(motor) which needs to be turned.
+	 * @param encoder is the encoder which is being read from
+	 */
 	public MotorEncoderSystem(Talon main, Encoder encoder) {
 
 		this.main = main;
@@ -122,10 +129,15 @@ public class MotorEncoderSystem {
 				sum_error = 0;
 			}
 		}
-
+		//speed - The speed value between -1.0 and 1.0 to set
 		main.set(power);
+		System.out.println("Main Power: "+main.get());
+		System.out.println("Front Power:"+front.get());
+		System.out.println("Rear Power: "+rear.get());
 	}
-
+	/**
+	 * resets the distance for the encoder.
+	 */
 	public void resetDist() {
 		encoder.reset();
 	}
@@ -157,7 +169,10 @@ public class MotorEncoderSystem {
 		this.speed = speed / 4;
 
 	}
-
+	/**
+	 * So I'm not sure what the numbers stand for, I thinkit's the current height of the elevator
+	 * @return
+	 */
 	public double getLevel() {
 		if (distance < 2.32) {
 			return 0;
@@ -167,11 +182,17 @@ public class MotorEncoderSystem {
 			return 2;
 		}
 	}
-
+	/**
+	 * Sets the amount of power being sent to the 
+	 * @param speed
+	 */
 	public void setSpeedElev(double speed) {
 		this.speed = speed * 2;
 	}
-
+	/**
+	 * Sets the amount of power being sent to the talons 
+	 * @param power is how much power is sent to the motor
+	 */
 	public void setPower(double power) {
 
 		this.power = power;
