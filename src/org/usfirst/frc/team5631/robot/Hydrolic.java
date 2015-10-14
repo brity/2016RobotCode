@@ -4,6 +4,7 @@ package org.usfirst.frc.team5631.robot;
 import edu.wpi.first.wpilibj.Solenoid;
 
 public class Hydrolic {
+	//hi
 	private String name;
 	public Solenoid sol1;
 	public Solenoid sol2;
