@@ -13,7 +13,7 @@ public class Gyroscope {
 
 	Gyro g;
 
-	/*
+	/**
 	 * @param The analog channel the gyro is connected to. Gyros can only be
 	 * used on on-board channels 0-1.
 	 */
@@ -22,7 +22,7 @@ public class Gyroscope {
 		g = new Gyro(c);
 	}
 
-	/*
+	/**
 	 * @param The analog channel the gyro is connected to. Gyros can only be
 	 * used on on-board channels 0-1.
 	 */

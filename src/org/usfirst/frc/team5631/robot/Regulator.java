@@ -9,6 +9,9 @@ public class Regulator {
 
 	}
 
+	/*
+	 * 
+	 */
 	public double regulateLeftSpeed() {
 		double speedLeft = 0;
 
@@ -51,17 +54,24 @@ public class Regulator {
 		if (speedZ > 0 && speedY > 0) {
 			speedRight -= speedZ;
 		}
+		
 
 		return speedRight * throttle;
 		// Now if only I knew what speedY was
 	}
 
 	public void setThrottle(double throttle) {
-		//We make it negative because the value we get I believe is -1 to 0
-		System.out.println("Throttle: "+throttle);
+		// We make it negative because the value we get I believe is -1 to 0
+		System.out.println("Throttle: " + throttle);
 		this.throttle = -throttle;
 	}
 
+	/**
+	 * 
+	 * @param speed
+	 *            is the speed at which the 
+	 * @param i
+	 */
 	public void setSpeed(double speed, int i) {
 		if (i == 1)
 			speedY = speed;
