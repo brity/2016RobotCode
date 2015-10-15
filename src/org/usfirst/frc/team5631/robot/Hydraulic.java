@@ -1,21 +1,10 @@
-<<<<<<< HEAD
-=======
 
->>>>>>> testbranch
 package org.usfirst.frc.team5631.robot;
 
 import edu.wpi.first.wpilibj.Solenoid;
 
 public class Hydraulic {
-<<<<<<< HEAD
-	//hi
-	private String name;
-	public Solenoid sol;
-	boolean pull, freeze;
-	private boolean pushBtn, pullBtn;
 
-	/**
-=======
 	private String name;
 	public Solenoid sol1;
 	public Solenoid sol2;
@@ -23,13 +12,11 @@ public class Hydraulic {
 	private boolean pushBtn, pullBtn;
 
 	/*
->>>>>>> testbranch
 	 * Makes a single solenoid at a specific channel
 	 * 
 	 * @param challen is the channel on the PCM to control (0..7).
 	 */
 	public Hydraulic(int channel) {
-<<<<<<< HEAD
 		sol = new Solenoid(channel);
 		pull = false;
 		freeze = true;
@@ -65,7 +52,6 @@ public class Hydraulic {
 	public void pullHydro() {
 		System.out.println("Pulling in solenoid: " + name);
 		if (pull && freeze) {
->>>>>>> testbranch
 		}
 	}
 
@@ -88,21 +74,13 @@ public class Hydraulic {
 		 * Will push or pull depending on what button is pressed.
 		 */
 		if (pushBtn) {
-<<<<<<< HEAD
 			push();
 		} else if (pullBtn) {
 			pull();
-=======
 			pushHydro();
 		} else if (pullBtn) {
 			pullHydro();
->>>>>>> testbranch
-		} else {
-			freeze = true;
 		}
 	}
-<<<<<<< HEAD
 }
-=======
 }
->>>>>>> testbranch
