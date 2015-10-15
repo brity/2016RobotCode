@@ -17,7 +17,9 @@ import edu.wpi.first.wpilibj.CameraServer;
  * directory.
  */
 public class Robot extends IterativeRobot {
-
+	//so I set the pin to 0 just till I know which pin the hydraulic pump goes to
+	static int solenoidPin = 0;
+	public static Hydraulic h1 = new Hydraulic(solenoidPin);
 	DriveTrain driveTrain;
 	// This is the webcam.
 	CameraServer server;
@@ -152,6 +154,11 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void testPeriodic() {
+	}
+	public static void testHydraulic(int btnPress){
+		
+		
+		h1.pushOrPull(btnPress);
 	}
 
 }
