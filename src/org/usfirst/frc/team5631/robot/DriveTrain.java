@@ -256,6 +256,17 @@ public class DriveTrain {
 					elevator.setSpeedElev(0);
 				}
 			}
+			/*
+			 * This portion will hopefully use the X-box controller to control
+			 * the pneumatics
+			 */
+			for(int f = 1;f<=controller[0].getNumOfButtons();f++){
+				if(0>inputDevice2){
+					Robot.h1.push();
+				}else{
+					Robot.h1.pull();
+				}
+			}
 
 		}
 

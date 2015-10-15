@@ -5,6 +5,8 @@ import edu.wpi.first.wpilibj.Joystick;
 public class Controller {
 
 	Joystick joyStick;
+	@SuppressWarnings("unused")
+	private int numOfButtons;
 
 	/**
 	 * 
@@ -14,6 +16,14 @@ public class Controller {
 
 		this.joyStick = joyStick;
 
+	}
+
+	public int getNumOfButtons() {
+		return numOfButtons;
+	}
+
+	public void setNumOfButtons(int numOfButtons) {
+		this.numOfButtons = numOfButtons;
 	}
 
 	/**
@@ -29,7 +39,7 @@ public class Controller {
 
 	/**
 	 * 
-	 * @param input
+	 * @param input is the button number
 	 * @return
 	 */
 	public boolean getButtonState(int input) {
