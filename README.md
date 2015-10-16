@@ -19,3 +19,5 @@ FRC Team 5631 2016 Robot Code
 
 4.	Now I would like you to make a Github account and download the Github desktop software at the following link.
 	https://desktop.github.com/
+
+5.	NO CODE WILL BE MERGED WITH THE MASTER BRANCH IF IT DOES NOT HAVE COMMENTS OR HAS BAD VARIABLE NAMES

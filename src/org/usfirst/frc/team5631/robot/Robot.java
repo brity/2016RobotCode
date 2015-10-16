@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.CameraServer;
 //Nolan was here (test)
 //I don't know I think it's a trap
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -17,7 +18,10 @@ import edu.wpi.first.wpilibj.CameraServer;
  * directory.
  */
 public class Robot extends IterativeRobot {
-
+	// so I set the pin to 0 just till I know which pin the hydraulic pump goes
+	// to
+	static int solenoidPin = 0;
+	public static Hydraulic h1 = new Hydraulic(solenoidPin);
 	DriveTrain driveTrain;
 	// This is the webcam.
 	CameraServer server;
@@ -149,9 +153,17 @@ public class Robot extends IterativeRobot {
 		} else {
 			driveTrain.calibrateElevator();
 		}
+
+		System.out.print("Test");
+		System.out.println("Hola Amigos");
 	}
 
 	public void testPeriodic() {
+	}
+
+	public static void testHydraulic(int btnPress) {
+
+		h1.pushOrPull(btnPress);
 	}
 
 }
