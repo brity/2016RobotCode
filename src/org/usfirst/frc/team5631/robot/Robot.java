@@ -155,10 +155,5 @@ public class Robot extends IterativeRobot {
 
 	public void testPeriodic() {
 	}
-	public static void testHydraulic(int btnPress){
-		
-		
-		h1.pushOrPull(btnPress);
-	}
 
 }
