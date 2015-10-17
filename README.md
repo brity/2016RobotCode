@@ -17,7 +17,9 @@ FRC Team 5631 2016 Robot Code
 	You must install the C/C++ version of eclipse or you will have to install the CDT files yourself and there's not much 		help for troubleshooting if you mess up.
 	https://wpilib.screenstepslive.com/s/4485/m/13809/l/145002-installing-eclipse-c-java
 
-4.	Now I would like you to make a Github account and download the Github desktop software at the following link.
+4.	Once you import the code, if you are having import errors saying "the import edu cannot be resolved" then make a dummy robot 	 project and the settings will fix themselves most of the time.
+
+5.	Now I would like you to make a Github account and download the Github desktop software at the following link.
 	https://desktop.github.com/
 
-5.	NO CODE WILL BE MERGED WITH THE MASTER BRANCH IF IT DOES NOT HAVE COMMENTS OR HAS BAD VARIABLE NAMES
+6.	NO CODE WILL BE MERGED WITH THE MASTER BRANCH IF IT DOES NOT HAVE COMMENTS OR HAS BAD VARIABLE NAMES
