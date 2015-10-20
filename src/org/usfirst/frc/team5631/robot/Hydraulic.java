@@ -1,8 +1,13 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> nanobranch
 package org.usfirst.frc.team5631.robot;
 
 import edu.wpi.first.wpilibj.Solenoid;
 
 public class Hydraulic {
+<<<<<<< HEAD
 
 	private String name;
 	public Solenoid sol;
@@ -16,29 +21,36 @@ public class Hydraulic {
 	 * 
 	 * @param challen is the channel on the PCM to control (0..7).
 	 */
+=======
+	public Solenoid sol;
+	boolean pull, freeze;
+	private boolean pushBtn, pullBtn;
+	private int pinChannel;
+
+>>>>>>> nanobranch
 	public Hydraulic(int channel) {
 		sol = new Solenoid(channel);
-		pull = false;
 		freeze = true;
+		this.pinChannel = channel;
+
 	}
 
 	/**
 	 * pushes the solenoid, once I know the pins
 	 */
 	public void push() {
-		System.out.println("Pushing out solenoid: " + name);
-		if (!pull && freeze) {
+		if (!freeze)
 			sol.set(true);
-		}
+
 	}
 
 	/**
 	 * 
 	 */
 	public void pull() {
-		System.out.println("Pulling in solenoid: " + name);
-		if (pull && freeze) {
+		if (!freeze)
 			sol.set(false);
+<<<<<<< HEAD
 		}
 		sol = new Solenoid(channel);
 		pull = false;
@@ -91,3 +103,7 @@ public class Hydraulic {
 
 	}
 }*/
+=======
+	}
+}
+>>>>>>> nanobranch

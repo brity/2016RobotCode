@@ -160,10 +160,13 @@ public class Robot extends IterativeRobot {
 
 	public void testPeriodic() {
 	}
+<<<<<<< HEAD
 
 	public static void testHydraulic(int btnPress) {
 
 		h1.pushOrPull(btnPress);
 	}
+=======
+>>>>>>> nanobranch
 
 }
