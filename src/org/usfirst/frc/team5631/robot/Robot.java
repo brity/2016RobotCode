@@ -31,6 +31,7 @@ public class Robot extends IterativeRobot {
 	public static boolean calibrating = true;
 
 	public void robotInit() {
+		System.out.println("Robot Init");
 		server = CameraServer.getInstance();
 		server.setQuality(50);
 		server.startAutomaticCapture("cam1");
@@ -38,6 +39,7 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void autonomousInit() {
+		System.out.println("Autonomous Init");
 		/*
 		 * Determines whether it is calibrating -- always true if autonomous is
 		 * turned off then on also resets the distance that the elevator and 2
@@ -102,6 +104,7 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void autonomousPeriodic() {
+		System.out.println("Autonomous Periodic");
 		// if the robot is not calibrating then it will run the set of commands
 		if (!calibrating) {
 			/*
@@ -138,12 +141,14 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void teleopPeriodicInit() {
+		System.out.println("Teleop Periodic Init");
 		// refer to autonomousInit
 		driveTrain.resetDistance();
 		calibrating = true;
 	}
 
 	public void teleopPeriodic() {
+		System.out.println("Teleop Periodic");
 		// refer to autonomousPeriodic
 		if (!calibrating) {
 			// Runs the robot (refer to DriveTrain class)
@@ -154,6 +159,7 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void testPeriodic() {
+		
 	}
 
 }

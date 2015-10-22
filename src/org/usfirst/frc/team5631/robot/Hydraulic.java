@@ -9,10 +9,10 @@ public class Hydraulic {
 	private boolean pushBtn, pullBtn;
 	private int pinChannel;
 
-	public Hydraulic(int channel) {
-		sol = new Solenoid(channel);
+	public Hydraulic(int pinChannel) {
+		sol = new Solenoid(pinChannel);
 		freeze = true;
-		this.pinChannel = channel;
+		this.pinChannel = pinChannel;
 
 	}
 

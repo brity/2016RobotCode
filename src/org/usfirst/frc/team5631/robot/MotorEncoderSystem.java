@@ -77,7 +77,7 @@ public class MotorEncoderSystem {
 	public void runMotors() {
 
 		distance = encoder.getDistance() * 4;
-		System.out.println("dist: " + distance);
+		System.out.println("Distance: " + distance);
 
 		time++;
 
