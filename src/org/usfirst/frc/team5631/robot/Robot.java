@@ -153,6 +153,10 @@ public class Robot extends IterativeRobot {
 		} else {
 			driveTrain.calibrateElevator();
 		}
+		//talon in port 7, test
+		int port = 7;
+		Talon testTalon = new Talon(port);
+		testTalon.set(0.1);
 
 		System.out.print("Test");
 		System.out.println("Hola Amigos");
